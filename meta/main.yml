@@ -1,0 +1,16 @@
+galaxy_info:
+  author: kadaan
+  description: Installs prezto and the powerlevel9k theme.
+  license: Apache 2.0
+  min_ansible_version: 2.2
+  platforms:
+    - name: MacOSX
+      versions:
+        - 10.11
+        - 10.12
+  galaxy_tags:
+    - development
+    - system
+    - console
+dependencies:
+  - kadaan.zsh

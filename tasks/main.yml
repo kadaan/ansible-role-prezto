@@ -1,0 +1,29 @@
+---
+- name: Install prezto from git.
+  git:
+    repo: https://github.com/sorin-ionescu/prezto.git
+    dest: "{{ ansible_env.HOME}}/.zprezto/"
+    track_submodules: true
+    force: true
+    update: false
+
+- name: Install prezto dotfiles.
+  file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME}}/.{{ item | basename }}"
+    state: link
+  with_fileglob: "{{ ansible_env.HOME}}/.zprezto/runcoms/*"
+  when: item|basename != "README.md"
+
+- name: Install prezto theme from git.
+  git:
+    repo: "https://github.com/bhilburn/powerlevel9k.git"
+    dest: "{{ ansible_env.HOME}}/.zprezto/modules/prompt/external/powerlevel9k"
+    force: true
+
+- name: Link prezto theme.
+  file:
+    src: "{{ ansible_env.HOME}}/.zprezto/modules/prompt/external/powerlevel9k/powerlevel9k.zsh-theme"
+    dest: "{{ ansible_env.HOME}}/.zprezto/modules/prompt/functions/prompt_powerlevel9k_setup"
+    state: link
+    force: true
