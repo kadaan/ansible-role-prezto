@@ -1,12 +1,4 @@
 ---
-- name: Run the zsh role.
-  include_role:
-    name: kadaan.zsh
-    private: true
-  vars:
-    zsh_execute: true
-  when: prezto_execute == true
-
 - name: Install prezto from git.
   git:
     repo: https://github.com/sorin-ionescu/prezto.git
@@ -14,7 +6,6 @@
     track_submodules: true
     force: true
     update: false
-  when: prezto_execute == true
 
 - name: Install prezto dotfiles.
   file:
@@ -22,14 +13,13 @@
     dest: "{{ ansible_env.HOME}}/.{{ item | basename }}"
     state: link
   with_fileglob: "{{ ansible_env.HOME}}/.zprezto/runcoms/*"
-  when: prezto_execute == true and item|basename != "README.md"
+  when: item|basename != "README.md"
 
 - name: Install prezto theme from git.
   git:
     repo: "https://github.com/bhilburn/powerlevel9k.git"
     dest: "{{ ansible_env.HOME}}/.zprezto/modules/prompt/external/powerlevel9k"
     force: true
-  when: prezto_execute == true
 
 - name: Link prezto theme.
   file:
@@ -37,4 +27,3 @@
     dest: "{{ ansible_env.HOME}}/.zprezto/modules/prompt/functions/prompt_powerlevel9k_setup"
     state: link
     force: true
-  when: prezto_execute == true
