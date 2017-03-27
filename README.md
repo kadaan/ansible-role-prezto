@@ -14,13 +14,13 @@ None.
 
 ## Dependencies
 
-  - `kadaan.zsh`
+  - [kadaan.zsh](https://galaxy.ansible.com/kadaan/zsh/)
 
 ## Example Playbook
 
     - hosts: localhost
       roles:
-        - { role: kadaan.prezto }
+        - { role: kadaan.prezto, prezto_execute: true }
 
 ## License
 

@@ -1,2 +1,2 @@
 ---
-# defaults file for prezto
+prezto_execute: false
