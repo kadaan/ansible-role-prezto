@@ -1,6 +1,6 @@
 # Ansible Role: Prezto
 
-[![Build Status](https://travis-ci.org/kadaan/ansible-role-prezto.svg?branch=master)](https://travis-ci.org/kadaan/ansible-role-prezto)
+[![Build Status](https://travis-ci.com/kadaan/ansible-role-prezto.svg?branch=master)](https://travis-ci.com/kadaan/ansible-role-prezto)
 
 Installs prezto and the powerlevel9k theme.
 
